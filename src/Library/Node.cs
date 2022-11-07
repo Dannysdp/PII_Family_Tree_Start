@@ -28,6 +28,11 @@ namespace Library
         {
             this.number = number;
         }
+        public Node(int number,Persona persona)
+        {
+            this.number = number;
+            this.persona = persona;
+        }
 
         public void AddChildren(Node n)
         {
