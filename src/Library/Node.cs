@@ -3,13 +3,15 @@ using System.Collections.ObjectModel;
 
 namespace Library
 {
-    public class Node
+    public class Node <T>
     {
         private int number;
 
-        private List<Node> children = new List<Node>();
+        private List<Node<T>> children = new List<Node<T>>();
 
-        private Persona persona{get;set;}
+        public T dato{
+            get;
+            private set;}
         public int Number {
             get
             {
@@ -17,7 +19,7 @@ namespace Library
             }
         }
 
-        public ReadOnlyCollection<Node> Children { 
+        public ReadOnlyCollection<Node<T>> Children { 
             get
             {
                 return this.children.AsReadOnly();
@@ -28,13 +30,13 @@ namespace Library
         {
             this.number = number;
         }
-        public Node(int number,Persona persona)
+        public Node(int number, T dato)
         {
             this.number = number;
-            this.persona = persona;
+            this.dato = dato;
         }
 
-        public void AddChildren(Node n)
+        public void AddChildren(Node<T> n)
         {
             this.children.Add(n);
         }
