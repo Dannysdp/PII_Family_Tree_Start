@@ -9,6 +9,7 @@ namespace Library
 
         private List<Node> children = new List<Node>();
 
+        private Persona persona{get;set;}
         public int Number {
             get
             {
