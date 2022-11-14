@@ -3,21 +3,13 @@ using System.Collections.ObjectModel;
 
 namespace Library
 {
-    public class Node <T>
+    public class Node <T> : IComponent<T>
     {
-        private int number;
-
         private List<Node<T>> children = new List<Node<T>>();
 
-        public T dato{
+        public T Dato{
             get;
             private set;}
-        public int Number {
-            get
-            {
-                return this.number;
-            }
-        }
 
         public ReadOnlyCollection<Node<T>> Children { 
             get
@@ -26,19 +18,18 @@ namespace Library
             }
         }
 
-        public Node(int number)
+        public Node(T dato)
         {
-            this.number = number;
-        }
-        public Node(int number, T dato)
-        {
-            this.number = number;
-            this.dato = dato;
+            this.Dato = dato;
         }
 
         public void AddChildren(Node<T> n)
         {
             this.children.Add(n);
+        }
+        public void Accept(IVisitor<T> visitor)
+        {
+            visitor.VisitNode(this);
         }
         
     }

@@ -1,14 +1,20 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
 namespace Library
 {
-    public class Persona
+    public class Persona 
     {
-        public string nombre;
-        public int edad;
+        public string Nombre;
+        public int Edad;
         public Persona(string nombre, int edad){
-            this.nombre = nombre;
-            this.edad = edad;
-        } 
+            this.Nombre = nombre;
+            this.Edad = edad;
+        }
+        int getEdad()
+        {
+            return this.Edad;    
+        }
     }
+
 }

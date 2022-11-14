@@ -7,10 +7,8 @@ namespace Library
     // to component classes. The signature of a visiting method allows the
     // visitor to identify the exact class of the component that it's dealing
     // with.
-    public interface IVisitor
+    public interface IVisitor<T>
     {
-        void VisitNodo(Node<Persona> node);
-
-        void VisitConcreteComponentB(Persona persona);
+        void VisitNode(Node<T> node);
     }
 }
