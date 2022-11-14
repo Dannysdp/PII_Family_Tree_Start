@@ -10,14 +10,14 @@ namespace Program
             //Deberia Funcionar pero hay un error en Visitor que no tiene sentindo. trate de todo pero nada funca 
             
             // ocho personas
-            Persona jorge = new Persona("jorge",50);
-            Persona juan = new Persona("juan",20);
-            Persona julian = new Persona("julian",3);
-            Persona julieta= new Persona("julieta",56);
-            Persona jimena = new Persona("jimena",4);
-            Persona jose = new Persona("jose",786876);
-            Persona juana = new Persona("juana",5);
-            Persona jesus = new Persona("jesus",2022);
+            Persona jorge = new Persona("jorge",1);
+            Persona juan = new Persona("juan",1);
+            Persona julian = new Persona("julian",1);
+            Persona julieta= new Persona("julieta",1);
+            Persona jimena = new Persona("jimena",1);
+            Persona jose = new Persona("jose",1);
+            Persona juana = new Persona("juana",1);
+            Persona jesus = new Persona("jesus",1);
 
             // ocho nodos con las personas
             Node<Persona> jorge1 = new Node<Persona>(jorge);
@@ -42,19 +42,20 @@ namespace Program
             
             // visitar el árbol aquí
             Console.WriteLine(juana7.Dato);
-            VisitorPersona<Persona> visitnode = new VisitorPersona<Persona>();
-            jorge1.Accept(visitnode);
-            juan2.Accept(visitnode);
-            julian3.Accept(visitnode);
-            juana7.Accept(visitnode);
-            Console.WriteLine(visitnode.edad);
+            VisitorPersona visitnode = new VisitorPersona();
+            recorreArbol(jorge1,visitnode);
+            recorreArbol(juan2,visitnode);
+            recorreArbol(julian3,visitnode);
+            recorreArbol(juana7,visitnode);
+            Console.WriteLine(visitnode.edadesTotales);
             
         }
-        public void recorreArbol(Node<Persona> parent,VisitorPersona<Persona> visitorNode){
+
+        public static void recorreArbol(Node<Persona> parent,VisitorPersona visitorNode){
             parent.Accept(visitorNode);
-            foreach (var chlid in parent.Children)
+            foreach (var child in parent.Children)
             {
-                recorreArbol(chlid,visitorNode);
+                recorreArbol(child,visitorNode);
             }
         }
     }
