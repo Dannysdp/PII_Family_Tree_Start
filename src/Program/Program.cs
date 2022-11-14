@@ -10,14 +10,14 @@ namespace Program
             //Deberia Funcionar pero hay un error en Visitor que no tiene sentindo. trate de todo pero nada funca 
             
             // ocho personas
-            Persona jorge = new Persona("jorge",1);
+            Persona jorge = new Persona("jorge",10);
             Persona juan = new Persona("juan",1);
             Persona julian = new Persona("julian",1);
             Persona julieta= new Persona("julieta",1);
             Persona jimena = new Persona("jimena",1);
             Persona jose = new Persona("jose",1);
             Persona juana = new Persona("juana",1);
-            Persona jesus = new Persona("jesus",1);
+            Persona jesus = new Persona("jesus",20);
 
             // ocho nodos con las personas
             Node<Persona> jorge1 = new Node<Persona>(jorge);
@@ -44,14 +44,25 @@ namespace Program
             Console.WriteLine(juana7.Dato);
             VisitorPersona visitnode = new VisitorPersona();
             recorreArbol(jorge1,visitnode);
-            recorreArbol(juan2,visitnode);
-            recorreArbol(julian3,visitnode);
-            recorreArbol(juana7,visitnode);
-            Console.WriteLine(visitnode.edadesTotales);
-            
+
+            Console.WriteLine("Edades Totales = " + visitnode.edadesTotales);
+            //hijo mas grande 
+            VisitorHijoMasGrande visitHijosMasGrande = new VisitorHijoMasGrande();
+            recorreArbol(jorge1,visitHijosMasGrande);
+            recorreArbol(juan2,visitHijosMasGrande);
+            recorreArbol(julian3,visitHijosMasGrande);
+            recorreArbol(juana7,visitHijosMasGrande);
+            Console.WriteLine("Hijo Mayor = " + visitHijosMasGrande.HijoMasViejo);
+            //nombre mas largo 
+            VisitorNombreMasLargo visitorNombreMasLargo = new VisitorNombreMasLargo();
+            recorreArbol(jorge1,visitorNombreMasLargo);
+            recorreArbol(juan2,visitorNombreMasLargo);
+            recorreArbol(julian3,visitorNombreMasLargo);
+            recorreArbol(juana7,visitorNombreMasLargo);
+            Console.WriteLine("Nombre más Largo = " + visitorNombreMasLargo.largoNombre);
         }
 
-        public static void recorreArbol(Node<Persona> parent,VisitorPersona visitorNode){
+        public static void recorreArbol(Node<Persona> parent,IVisitor<Persona> visitorNode){
             parent.Accept(visitorNode);
             foreach (var child in parent.Children)
             {

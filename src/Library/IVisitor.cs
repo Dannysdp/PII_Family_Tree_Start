@@ -10,5 +10,6 @@ namespace Library
     public interface IVisitor<T>
     {
         void VisitNode(Node<T> node);
+
     }
 }
